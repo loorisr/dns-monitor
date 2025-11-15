@@ -9,8 +9,10 @@ query_regex = re.compile(
     r"^(?P<time>\d+\.\d+)\s+IP\s+"
     r"(?P<ip_source>.+?)\.\d+\s+>\s+"
     r"(?P<ip_dest>.+?)\.\d+:\s+"
-    r"(?P<query_id>\d+)\+?\s+[A-Z]+\?\s+"  
-    r"(?P<domain>.+?)\s+(\(\d+\))$"
+    r"(?P<query_id>\d+)\+?\s+"          # Matches query ID (e.g., 36459) and optional +
+    r"(?:\[\d+au\]\s+)?"               # Optionally matches the [1au] flag and space
+    r"(?P<query_type>[A-Z]+)\?\s+"     # Matches query type (A, AAAA, HTTPS) and ?
+    r"(?P<domain>.+?)\s+\(\d+\)$"      # Matches domain and the final (length)
 )
 
 response_regex = re.compile(
