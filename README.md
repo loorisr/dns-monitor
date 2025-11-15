@@ -7,6 +7,7 @@ Root needed
 # Usage
 
 Replace enp3so with your interface
+
     python3 dns_mon.py -i enp3s0
 
 Output example:
